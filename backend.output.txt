@@ -1,0 +1,302 @@
+
+// -------------------------------------------------------------------------------------------
+// postman request
+// -------------------------------------------------------------------------------------------
+
+POST http://127.0.0.1:3001/api/multiagent
+{
+    "technologies": [
+        "Generative AI"
+    ],
+    "businessareas": [
+        "Marketing"
+    ]
+}
+
+response: 
+{
+    "input_id": "49077c8c-de86-4cf8-9fba-e3ef58fca1c3"
+}
+
+
+
+// -------------------------------------------------------------------------------------------
+// output from terminal
+// -------------------------------------------------------------------------------------------
+
+2025-03-01 22:40:59,934 - 37348 - _internal.py-_internal:96 - INFO: 127.0.0.1 - - [01/Mar/2025 22:40:59] "POST /api/multiagent HTTP/1.1" 200 -
+Running crew for 49077c8c-de86-4cf8-9fba-e3ef58fca1c3 with technologies ['Generative AI'] and businessareas ['Marketing']
+Setting up crew for
+        49077c8c-de86-4cf8-9fba-e3ef58fca1c3 with technologies ['Generative AI']
+        and businessareas ['Marketing']
+Start output 49077c8c-de86-4cf8-9fba-e3ef58fca1c3
+Running crew for 
+            49077c8c-de86-4cf8-9fba-e3ef58fca1c3
+ [DEBUG]: == Working Agent: Research Agent
+ [INFO]: == Starting Task: Research the business areas ['Marketing'] for the Generative AI technology. 
+                For each business area, find the URLs for 3 recent blog articles and the URLs and titles for
+                3 recent YouTube videos in each business area.
+                Return this collected information in a JSON object.
+
+                Helpful Tips:
+                - To find the blog articles names and URLs, perform searches on Google such like the following:
+                    - "Generative AI [BUSINESS AREA HERE] blog articles"
+                - To find the youtube videos, perform searches on YouTube such as the following:
+                    - "Generative AI in [BUSINESS AREA HERE]"
+
+                Important:
+                - Once you've found the information, immediately stop searching for additional information.
+                - Only return the requested information. NOTHING ELSE!
+                - Do not generate fake information. Only return the information you find. Nothing else!
+                - Do not stop researching until you find the requested information for each business area in the technology.
+
+ [DEBUG]: == [Research Agent] Task output: 
+
+
+ [DEBUG]: == Working Agent: Research Manager
+ [INFO]: == Starting Task: Based on the list of technologies ['Generative AI'] and the business areas ['Marketing'],
+                use the results from the Research Agent to research each business area in each technology.
+                to put together a json object containing the URLs for 3 blog articles, the URLs and title 
+                for 3 YouTube interviews for each business area in each technology.
+
+
+
+
+> Entering new CrewAgentExecutor chain...
+Thought: I need to find 3 recent blog articles about Generative AI in Marketing.
+Action: Search the internet
+Action Input: {"search_query": "Generative AI in Marketing blog articles"} 
+
+
+Search results: Title: Generative AI in Marketing: Use Cases to Inspire - Cohere
+Link: https://cohere.com/blog/generative-ai-in-marketing
+Snippet: Generative AI has the capability to transform traditional marketing efforts into a more agile, streamlined, and efficient set of workflows.
+---
+Title: 11+ Use-Cases of Generative AI in Marketing - Delve AI
+Link: https://www.delve.ai/blog/generative-ai-marketing
+Snippet: Learn how generative AI is revolutionizing marketing, plus its benefits, use cases, and top Gen AI tools. Discover valuable insights for using generative AI ...    
+---
+Title: Generative AI in Marketing || Use cases - XenonStack
+Link: https://www.xenonstack.com/blog/generative-ai-marketing
+Snippet: This blog explores the impact of generative AI on the marketing industry and the future of marketing.
+---
+Title: Consumers and marketers see a role for (responsible) generative AI ...
+Link: https://blog.adobe.com/en/publish/2023/06/22/consumers-marketers-see-role-responsible-generative-ai-in-customer-experiences
+Snippet: A new global survey by Adobe reveals how generative AI can help marketers up-level customer experiences.
+---
+Title: Generative AI in Marketing: How It Fits Into Your Strategy, According ...
+Link: https://blog.hubspot.com/marketing/marketing-strategy-ai-tips-jasper
+Snippet: AI can help you get the ball rolling even faster than you usually might: marketers report saving 2-3 hours when using gen AI for brainstorming.
+---
+Title: AI-Driven Content Creation: The Advantage of Generative AI Marketing
+Link: https://www.ringy.com/articles/generative-ai-marketing
+Snippet: Generative AI marketing is changing how we do business. This informative article dives into the topic and explains how it can improve your ...
+---
+Title: What Can Generative AI Do for Your Marketing Campaigns?
+Link: https://www.marketingeye.com/blog/what-can-generative-ai-do-for-your-marketing-campaigns.html
+Snippet: AI tools can help marketers generate vast amounts of content in a fraction of the time it would take manually, from blog posts to AD designs.
+---
+Title: Generative AI in B2B Influencer Marketing: New Data and Trends
+Link: https://www.toprankmarketing.com/blog/generative-ai-influencer-marketing-trends/
+Snippet: The widespread adoption of generative AI technology is reaching every aspect of marketing strategies, from content to SEO to analytics and ...
+---
+Title: Generative AI For Content Creation: How Marketers Can Use It
+Link: https://www.forbes.com/councils/theyec/2023/08/17/generative-ai-for-content-creation-how-marketers-can-use-it/
+Snippet: With its ability to generate human-like text, images and videos, generative AI offers marketers a powerful stack of tools to streamline content production.
+---
+Title: The Impact of Generative AI on Marketing Innovation
+Link: https://www.marketingeyeatlanta.com/blog/impact-of-generative-ai-on-marketing-innovation.html
+Snippet: Generative AI transforms marketing with faster content creation, enhanced personalization, boosted creativity, and solutions to ethical challenges.
+---
+
+
+Thought: I now need to find 3 recent YouTube videos about Generative AI in Marketing.
+Action: Search YouTube Videos
+Action Input: {"keyword": "Generative AI in Marketing", "max_results": 3} 
+
+[VideoSearchResult(title='What Will Happen to Marketing in the Age of AI? | Jessica Apotheker | TED', video_url='https://www.youtube.com/watch?v=3MwMII8n1qM'), VideoSearchResult(title='How Will Generative AI Shape the Future of Marketing?', video_url='https://www.youtube.com/watch?v=PVVUPUJeezo'), VideoSearchResult(title='7 Ways Marketers Should Use Generative AI', video_url='https://www.youtube.com/watch?v=hc9ZcFGhcNI')]
+
+Thought: I now can give a great answer
+Final Answer: 
+```json
+{
+  "Marketing": {
+    "blog_articles": [
+      {
+        "title": "Generative AI in Marketing: Use Cases to Inspire",
+        "url": "https://cohere.com/blog/generative-ai-in-marketing"
+      },
+      {
+        "title": "11+ Use-Cases of Generative AI in Marketing",
+        "url": "https://www.delve.ai/blog/generative-ai-marketing"
+      },
+      {
+        "title": "Generative AI in Marketing || Use cases",
+        "url": "https://www.xenonstack.com/blog/generative-ai-marketing"
+      }
+    ],
+    "youtube_videos": [
+      {
+        "title": "What Will Happen to Marketing in the Age of AI? | Jessica Apotheker | TED",
+        "url": "https://www.youtube.com/watch?v=3MwMII8n1qM"
+      },
+      {
+        "title": "How Will Generative AI Shape the Future of Marketing?",
+        "url": "https://www.youtube.com/watch?v=PVVUPUJeezo"
+      },
+      {
+        "title": "7 Ways Marketers Should Use Generative AI",
+        "url": "https://www.youtube.com/watch?v=hc9ZcFGhcNI"
+      }
+    ]
+  }
+}
+```
+
+> Finished chain.
+Appending event for 49077c8c-de86-4cf8-9fba-e3ef58fca1c3 with output description='Research the business areas [\'Marketing\'] for the Generative AI technology. \n           
+     For each business area, find the URLs for 3 recent blog articles and the URLs and titles for\n                3 recent YouTube videos in each business area.\n          
+      Return this collected information in a JSON object.\n\n                Helpful Tips:\n                - To find the blog articles names and URLs, perform searches on Google such like the following:\n                    - "Generative AI [BUSINESS AREA HERE] blog articles"\n                - To find the youtube videos, perform searches on YouTube such as the following:\n                    - "Generative AI in [BUSINESS AREA HERE]"\n\n                Important:\n                - Once you\'ve found the information, immediately stop searching for additional information.\n                - Only return the requested information. NOTHING ELSE!\n                - Do not generate fake information. Only return the information you find. Nothing else!\n                - Do not stop researching until you find the requested information for each business area in the technology.\n' summary="Research the business areas ['Marketing'] for the Generative AI technology...." exported_output='{\n  "technology": "Generative AI",\n  "businessarea": "Marketing",\n  "blog_articles_urls": [\n    "https://cohere.com/blog/generative-ai-in-marketing",\n    "https://www.delve.ai/blog/generative-ai-marketing",\n    "https://www.xenonstack.com/blog/generative-ai-marketing"\n  ],\n  "youtube_videos_urls": [\n    {\n      "name": "What Will Happen to Marketing in the Age of AI? | Jessica Apotheker | TED",\n      "url": "https://www.youtube.com/watch?v=3MwMII8n1qM"\n    },\n    {\n      "name": "How Will Generative AI Shape the Future of Marketing?",\n      "url": "https://www.youtube.com/watch?v=PVVUPUJeezo"\n    },\n    {\n      "name": "7 Ways Marketers Should Use Generative AI",\n      "url": "https://www.youtube.com/watch?v=hc9ZcFGhcNI"\n    }\n  ]\n}' raw_output='```json\n{\n  "Marketing": {\n    "blog_articles": [\n      {\n        "title": "Generative AI in Marketing: Use Cases to Inspire",\n        "url": "https://cohere.com/blog/generative-ai-in-marketing"\n      },\n      {\n        "title": "11+ Use-Cases of Generative AI in Marketing",\n        "url": "https://www.delve.ai/blog/generative-ai-marketing"\n      },\n      {\n        "title": "Generative AI in Marketing || Use cases",\n        "url": "https://www.xenonstack.com/blog/generative-ai-marketing"\n      }\n    ],\n    "youtube_videos": [\n      {\n        "title": "What Will Happen to Marketing in the Age of AI? | Jessica Apotheker | TED",\n        "url": "https://www.youtube.com/watch?v=3MwMII8n1qM"\n      },\n      {\n        "title": "How Will Generative AI Shape the Future of Marketing?",\n        "url": "https://www.youtube.com/watch?v=PVVUPUJeezo"\n      },\n      {\n        "title": "7 Ways Marketers Should Use Generative AI",\n        "url": "https://www.youtube.com/watch?v=hc9ZcFGhcNI"\n      }\n    ]\n  }\n}\n```'
+Appending event for output
+
+
+> Entering new CrewAgentExecutor chain...
+I now know the final answer
+
+Final Answer:
+```json
+{
+  "Generative AI": {
+    "Marketing": {
+      "blog_articles": [
+        {
+          "url": "https://cohere.com/blog/generative-ai-in-marketing"
+        },
+        {
+          "url": "https://www.delve.ai/blog/generative-ai-marketing"
+        },
+        {
+          "url": "https://www.xenonstack.com/blog/generative-ai-marketing"
+        }
+      ],
+      "youtube_videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=3MwMII8n1qM",
+          "title": "What Will Happen to Marketing in the Age of AI? | Jessica Apotheker | TED"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=PVVUPUJeezo",
+          "title": "How Will Generative AI Shape the Future of Marketing?"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=hc9ZcFGhcNI",
+          "title": "7 Ways Marketers Should Use Generative AI"
+        }
+      ]
+    }
+  }
+}
+```
+
+> Finished chain.
+Appending event for 49077c8c-de86-4cf8-9fba-e3ef58fca1c3 with output description="Based on the list of technologies ['Generative AI'] and the business areas ['Marketing'],\n                use the results from the Research Agent to research each business area in each technology.\n                to put together a json object containing the URLs for 3 blog articles, the URLs and title \n                for 3 YouTube interviews for each business area in each technology.\n\n" summary="Based on the list of technologies ['Generative AI'] and the..." exported_output='{\n  "businessareas": [\n    {\n      "technology": "Generative AI",\n      "businessarea": "Marketing",\n      "blog_articles_urls": [\n        "https://cohere.com/blog/generative-ai-in-marketing",\n        "https://www.delve.ai/blog/generative-ai-marketing",\n        "https://www.xenonstack.com/blog/generative-ai-marketing"\n      ],\n      "youtube_videos_urls": [\n        {\n          "name": "What Will Happen to Marketing in the Age of AI? | Jessica Apotheker | TED",\n          "url": "https://www.youtube.com/watch?v=3MwMII8n1qM"\n        },\n        {\n          "name": "How Will Generative AI Shape the Future of Marketing?",\n          "url": "https://www.youtube.com/watch?v=PVVUPUJeezo"\n        },\n        {\n          "name": "7 Ways Marketers Should Use Generative AI",\n          "url": "https://www.youtube.com/watch?v=hc9ZcFGhcNI"\n        }\n      ]\n    }\n  ]\n}' raw_output='```json\n{\n  "Generative AI": {\n    "Marketing": {\n      "blog_articles": [\n        {\n          "url": "https://cohere.com/blog/generative-ai-in-marketing"\n        },\n        {\n          "url": "https://www.delve.ai/blog/generative-ai-marketing"\n        },\n        {\n          "url": "https://www.xenonstack.com/blog/generative-ai-marketing"\n        }\n      ],\n      "youtube_videos": [\n        {\n          "url": "https://www.youtube.com/watch?v=3MwMII8n1qM",\n          "title": "What Will Happen to Marketing in the Age of AI? | Jessica Apotheker | TED"\n        },\n        {\n          "url": "https://www.youtube.com/watch?v=PVVUPUJeezo",\n          "title": "How Will Generative AI Shape the Future of Marketing?"\n        },\n        {\n          "url": "https://www.youtube.com/watch?v=hc9ZcFGhcNI",\n          "title": "7 Ways Marketers Should Use Generative AI"\n        }\n      ]\n    }\n  }\n}\n```'
+Appending event for output
+ [DEBUG]: == [Research Manager] Task output: {
+  "businessareas": [
+    {
+      "technology": "Generative AI",
+      "businessarea": "Marketing",
+      "blog_articles_urls": [
+        "https://cohere.com/blog/generative-ai-in-marketing",
+        "https://www.delve.ai/blog/generative-ai-marketing",
+        "https://www.xenonstack.com/blog/generative-ai-marketing"
+      ],
+      "youtube_videos_urls": [
+        {
+          "name": "What Will Happen to Marketing in the Age of AI? | Jessica Apotheker | TED",
+          "url": "https://www.youtube.com/watch?v=3MwMII8n1qM"
+        },
+        {
+          "name": "How Will Generative AI Shape the Future of Marketing?",
+          "url": "https://www.youtube.com/watch?v=PVVUPUJeezo"
+        },
+        {
+          "name": "7 Ways Marketers Should Use Generative AI",
+          "url": "https://www.youtube.com/watch?v=hc9ZcFGhcNI"
+        }
+      ]
+    }
+  ]
+}
+
+
+Appending event for output
+2025-03-01 22:41:55,702 - 25036 - _internal.py-_internal:96 - INFO: 127.0.0.1 - - [01/Mar/2025 22:41:55] "GET /api/multiagent/49077c8c-de86-4cf8-9fba-e3ef58fca1c3 HTTP/1.1" 200 -
+
+
+
+
+
+// -------------------------------------------------------------------------------------------
+// postman request/response
+// -------------------------------------------------------------------------------------------
+
+GET http://127.0.0.1:3001/api/multiagent/49077c8c-de86-4cf8-9fba-e3ef58fca1c3
+
+response: 
+
+{
+    "events": [
+        {
+            "data": "CREW STARTED",
+            "timestamp": "2025-03-01T22:41:00.038988"
+        },
+        {
+            "data": "{\n  \"technology\": \"Generative AI\",\n  \"businessarea\": \"Marketing\",\n  \"blog_articles_urls\": [\n    \"https://cohere.com/blog/generative-ai-in-marketing\",\n    \"https://www.delve.ai/blog/generative-ai-marketing\",\n    \"https://www.xenonstack.com/blog/generative-ai-marketing\"\n  ],\n  \"youtube_videos_urls\": [\n    {\n      \"name\": \"What Will Happen to Marketing in the Age of AI? | Jessica Apotheker | TED\",\n      \"url\": \"https://www.youtube.com/watch?v=3MwMII8n1qM\"\n    },\n    {\n      \"name\": \"How Will Generative AI Shape the Future of Marketing?\",\n      \"url\": \"https://www.youtube.com/watch?v=PVVUPUJeezo\"\n    },\n    {\n      \"name\": \"7 Ways Marketers Should Use Generative AI\",\n      \"url\": \"https://www.youtube.com/watch?v=hc9ZcFGhcNI\"\n    }\n  ]\n}",
+            "timestamp": "2025-03-01T22:41:20.609419"
+        },
+        {
+            "data": "{\n  \"businessareas\": [\n    {\n      \"technology\": \"Generative AI\",\n      \"businessarea\": \"Marketing\",\n      \"blog_articles_urls\": [\n        \"https://cohere.com/blog/generative-ai-in-marketing\",\n        \"https://www.delve.ai/blog/generative-ai-marketing\",\n        \"https://www.xenonstack.com/blog/generative-ai-marketing\"\n      ],\n      \"youtube_videos_urls\": [\n        {\n          \"name\": \"What Will Happen to Marketing in the Age of AI? | Jessica Apotheker | TED\",\n          \"url\": \"https://www.youtube.com/watch?v=3MwMII8n1qM\"\n        },\n        {\n          \"name\": \"How Will Generative AI Shape the Future of Marketing?\",\n          \"url\": \"https://www.youtube.com/watch?v=PVVUPUJeezo\"\n        },\n        {\n          \"name\": \"7 Ways Marketers Should Use Generative AI\",\n          \"url\": \"https://www.youtube.com/watch?v=hc9ZcFGhcNI\"\n        }\n      ]\n    }\n  ]\n}",
+            "timestamp": "2025-03-01T22:41:36.158745"
+        },
+        {
+            "data": "CREW COMPLETED",
+            "timestamp": "2025-03-01T22:41:36.159744"
+        },
+        {
+            "data": "Crew complete",
+            "timestamp": "2025-03-01T22:41:36.159744"
+        }
+    ],
+    "input_id": "49077c8c-de86-4cf8-9fba-e3ef58fca1c3",
+    "result": {
+        "businessareas": [
+            {
+                "blog_articles_urls": [
+                    "https://cohere.com/blog/generative-ai-in-marketing",
+                    "https://www.delve.ai/blog/generative-ai-marketing",
+                    "https://www.xenonstack.com/blog/generative-ai-marketing"
+                ],
+                "businessarea": "Marketing",
+                "technology": "Generative AI",
+                "youtube_videos_urls": [
+                    {
+                        "name": "What Will Happen to Marketing in the Age of AI? | Jessica Apotheker | TED",
+                        "url": "https://www.youtube.com/watch?v=3MwMII8n1qM"
+                    },
+                    {
+                        "name": "How Will Generative AI Shape the Future of Marketing?",
+                        "url": "https://www.youtube.com/watch?v=PVVUPUJeezo"
+                    },
+                    {
+                        "name": "7 Ways Marketers Should Use Generative AI",
+                        "url": "https://www.youtube.com/watch?v=hc9ZcFGhcNI"
+                    }
+                ]
+            }
+        ]
+    },
+    "status": "COMPLETE"
+}
+
+
