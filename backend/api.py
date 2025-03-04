@@ -4,9 +4,11 @@ from threading import Thread
 from crews import TechnologyResearchCrew
 from log_manager import append_event, outputs, outputs_lock, Event
 from datetime import datetime
+from flask_cors import CORS
 import json
 
 app = Flask(__name__)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 def kickoff_crew(input_id, technologies: list[str], businessareas: list[str]):
     print(f"Running crew for {input_id} with technologies {technologies} and businessareas {businessareas}")
