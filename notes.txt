@@ -1,0 +1,53 @@
+
+
+//-----------------------------------------------------------------
+// create virtual env for python, and install packages
+//-----------------------------------------------------------------
+
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+pip install xxxx                     // eg. pip install langchain-groq
+
+// uninstall
+pip uninstall -r requirements.txt -y
+
+
+//-----------------------------------------------------------------
+// install dependencies using poetry (if project supports poetry)
+//-----------------------------------------------------------------
+
+pyenv local 3.11.4
+poetry install          
+poetry install --no-root
+poetry shell
+poetry add xxxx         // eg. poetry add langchain-groq
+
+
+//-----------------------------------------------------------------
+// misc
+//-----------------------------------------------------------------
+
+import warnings
+warnings.filterwarnings('ignore')
+
+
+
+//-----------------------------------------------------------------
+// Notes for Section 58 (crewai multi-agents)
+//-----------------------------------------------------------------
+
+// create virtual env
+// do pip install
+// do poetry install
+
+// run the python Script
+python api.py
+// or better yet, run as a python file in VSCode
+
+http://127.0.0.1:3001
+
+// use VSCode postman extenstion to send API requests
+
+
+
